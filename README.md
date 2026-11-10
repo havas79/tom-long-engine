@@ -1,4 +1,4 @@
-# TomLongEngine: a Python re-implementation of *Tom Long – The Time Adventure* (1994)
+# Tom Long Engine: a Python re-implementation of *Tom Long – The Time Adventure* (1994)
 
 
 Addresses like `0468:0815` are *segment:offset* in the loaded ENGINE.EXE image (MZ header 0xE00 bytes;
