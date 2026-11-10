@@ -1,0 +1,23 @@
+hwopl - DOSBox OPL emulator (DBOPL) with a small C interface for ctypes.
+
+Windows DLLs (built on Linux with MinGW-w64, no runtime DLLs needed):
+  x86_64-w64-mingw32-g++ -O2 -shared -static -static-libgcc -static-libstdc++ -s -o hwopl64.dll hwopl.cpp dbopl.cpp
+  i686-w64-mingw32-g++   -O2 -shared -static -static-libgcc -static-libstdc++ -s -Wl,--kill-at -o hwopl32.dll hwopl.cpp dbopl.cpp
+With MSYS2/MinGW on Windows the same commands work with g++.
+With Visual Studio (Developer Command Prompt):
+  cl /O2 /LD /EHsc hwopl.cpp dbopl.cpp /Fe:hwopl64.dll
+
+Linux / macOS:
+  g++ -O2 -shared -fPIC -o libhwopl.so hwopl.cpp dbopl.cpp
+  clang++ -O2 -shared -fPIC -o libhwopl.dylib hwopl.cpp dbopl.cpp
+
+C interface:
+  void* hwopl_create(unsigned rate);
+  void  hwopl_write(void* h, int reg, int val);
+  void  hwopl_generate(void* h, short* out, int samples);   // mono, 16-bit
+  void  hwopl_destroy(void* h);
+  int   hwopl_version(void);
+
+Licence: DBOPL (dbopl.cpp/.h) is Copyright (C) 2002-2011 The DOSBox Team, GNU GPL
+v2 or later; the wrapper follows pyopl by Adam Nielsen (GPL v3 or later). The DLLs
+are therefore distributed under the GNU GPL v3.
