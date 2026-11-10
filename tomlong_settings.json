@@ -1,0 +1,8 @@
+{
+ "scale": 3,
+ "aspect": true,
+ "fullscreen": false,
+ "intro": true,
+ "music": true,
+ "fx": true
+}
